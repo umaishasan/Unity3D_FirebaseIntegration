@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "180041867924",
+    "firebase_url": "https://unity3d-firebaseintegrating-default-rtdb.firebaseio.com",
+    "project_id": "unity3d-firebaseintegrating",
+    "storage_bucket": "unity3d-firebaseintegrating.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180041867924:android:dc577062d0040aa195ca81",
+        "android_client_info": {
+          "package_name": "com.umaishasan.Unity3D_FirebaseIntegration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "180041867924-oc7v99v1jfmabsdhi367b3hb9db48447.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-v-lF09vTZIh_1YerXBVRofeApxcudBE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "180041867924-oc7v99v1jfmabsdhi367b3hb9db48447.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
