@@ -10,10 +10,15 @@ public class UIController : MonoBehaviour
     public TMP_InputField nameInpFld;
     public TMP_InputField emailInpFld;
 
+    [Header("-Text")]
+    public TMP_Text nameTxt;
+    public TMP_Text emailTxt;
+
     [Header("-Buttons")]
     public Button saveBtn;
     public Button updateBtn;
     public Button retriveBtn;
+    public Button deleteBtn;
 
     [Header("-Script")]
     [SerializeField] DatabaseManager databaseManager;
@@ -30,10 +35,15 @@ public class UIController : MonoBehaviour
         nameInpFld = mainPanelOfInpfld.transform.Find("InputFieldsPanel/NamePanel/InputField (TMP)").GetComponent<TMP_InputField>();
         emailInpFld = mainPanelOfInpfld.transform.Find("InputFieldsPanel/EmailPanel/InputField (TMP)").GetComponent<TMP_InputField>();
 
+        ///text
+        nameTxt = mainPanelOfInpfld.transform.Find("GetDataPanel/ForShowName/NameShow").GetComponent<TMP_Text>();
+        emailTxt = mainPanelOfInpfld.transform.Find("GetDataPanel/ForShowEmail/EmailShow").GetComponent<TMP_Text>();
+
         ///buttons
         saveBtn = mainPanelOfInpfld.transform.Find("ButtonsPanel/Save").GetComponent<Button>();
         updateBtn = mainPanelOfInpfld.transform.Find("ButtonsPanel/Update").GetComponent<Button>();
         retriveBtn = mainPanelOfInpfld.transform.Find("ButtonsPanel/Reterive").GetComponent<Button>();
+        deleteBtn = mainPanelOfInpfld.transform.Find("ButtonsPanel/Delete").GetComponent<Button>();
 
         ///script
         databaseManager = FindObjectOfType<DatabaseManager>(true);
@@ -49,6 +59,7 @@ public class UIController : MonoBehaviour
         saveBtn.onClick.AddListener(SaveBtnLisner);
         updateBtn.onClick.AddListener(UpdateBtnLisner);
         retriveBtn.onClick.AddListener(RetriveBtnLisner);
+        deleteBtn.onClick.AddListener(DeleteBtnListner);
     }
 
     #endregion
@@ -76,12 +87,23 @@ public class UIController : MonoBehaviour
 
     void UpdateBtnLisner()
     {
+        databaseManager.UpdateUserDataInfo();
 
+        Debug.Log("Update Data in firebase");
     }
 
     void RetriveBtnLisner()
     {
+        databaseManager.RetriveUserDataInfo();
 
+        Debug.Log("Data Get from firebase");
+    }
+
+    void DeleteBtnListner()
+    {
+        databaseManager.DeleteUserDataInfo();
+
+        Debug.Log("Delete Data from firebase");
     }
 
     #endregion
