@@ -1,18 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Firebase.Database;
+using TMPro;
 
 public class DatabaseManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    #region Var
+
+    private string dataInfo_Id;
+    private DatabaseReference databaseReference;
+
+    [Header("-Script")]
+    [SerializeField] UIController uiController;
+
+    #endregion
+
+    #region Unity_Events
+
+    private void Reset()
     {
-        
+        uiController = FindObjectOfType<UIController>(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        dataInfo_Id = SystemInfo.deviceUniqueIdentifier;
+        databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
     }
+
+    #endregion
+
+    public void CreateUserDataInfo()
+    {
+        DataInfo dataInfo = new DataInfo(uiController.nameInpFld.text, uiController.emailInpFld.text);
+        string json = JsonUtility.ToJson(dataInfo);
+
+        databaseReference.Child("DataInfo").Child(dataInfo_Id).SetRawJsonValueAsync(json);
+    }
+
 }
